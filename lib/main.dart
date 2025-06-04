@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomSheet:
         TextField(
-          decoration:  InputDecoration(
+          decoration:  const InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Say something'
           ),
@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Text(
                     translatedWord,
-                    style:  TextStyle(fontWeight: FontWeight.bold,),
+                    style:  const TextStyle(fontWeight: FontWeight.bold,),
                   ),
                 ],
               ),

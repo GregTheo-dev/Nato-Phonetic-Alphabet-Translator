@@ -85,18 +85,19 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       bottomSheet:
         TextField(
-          decoration: const InputDecoration(
+          decoration:  InputDecoration(
               border: OutlineInputBorder(),
               hintText: 'Say something'
           ),
           onSubmitted: (String value) async{
+            translatedWord = "";
             wordSubmitted(value);
           },
         ),
       body: DecoratedBox(
         decoration: BoxDecoration(
           color: Colors.lightBlueAccent.shade100,
-          image: DecorationImage(image : AssetImage("assets/images/compass.png" ), opacity: 0.1)
+          image: const DecorationImage(image : AssetImage("assets/images/compass.png" ), opacity: 0.1)
         ),
       child:
         Center(
@@ -108,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Text(
                     translatedWord,
-                    style: TextStyle(fontWeight: FontWeight.bold,),
+                    style:  TextStyle(fontWeight: FontWeight.bold,),
                   ),
                 ],
               ),

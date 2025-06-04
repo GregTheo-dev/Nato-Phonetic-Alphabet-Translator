@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'alphabet.dart';
+import 'natoPhoneticAlphabet.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Nautical Alphabet Translator',
+      title: 'NATO Phonetic Alphabet Translator',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlueAccent),
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'NATO phonetic alphabet translator'),
@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  String translated_word = "";
+  String translatedWord = "";
 
   void wordSubmitted(String word) {
     List<String> tr = [];
@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       }
       //make a string that contains the translated results
       for(String str in tr){
-        translated_word = translated_word + str + '\n';
+        translatedWord = translatedWord + str + '\n';
       }
     });
   }
@@ -83,29 +83,38 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.lightBlueAccent,
         title: Text(widget.title),
       ),
-      body: Center(
-        child: SingleChildScrollView(
-          child:
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                translated_word,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              TextField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Say something'
-                ),
-                onSubmitted: (String value) async{
-                  wordSubmitted(value);
-                },
-              ),
-            ],
+      bottomSheet:
+        TextField(
+          decoration: const InputDecoration(
+              border: OutlineInputBorder(),
+              hintText: 'Say something'
           ),
+          onSubmitted: (String value) async{
+            wordSubmitted(value);
+          },
         ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          color: Colors.lightBlueAccent.shade100,
+          image: DecorationImage(image : AssetImage("assets/images/compass.png" ), opacity: 0.1)
+        ),
+      child:
+        Center(
+          child:
+            SingleChildScrollView(
+              child:
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    translatedWord,
+                    style: TextStyle(fontWeight: FontWeight.bold,),
+                  ),
+                ],
+              ),
+            ),
+        ),
+    ),
     );
   }
 }
